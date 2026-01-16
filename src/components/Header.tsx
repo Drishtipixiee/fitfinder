@@ -53,20 +53,25 @@ export default function Header() {
         </button>
       </nav>
 
-      {isOpen && (
-        <div className="md:hidden mt-2">
-          <input
-            type="text"
-            placeholder="Search opportunities..."
-            className="w-full px-3 py-2 border rounded"
-            value={query}
-            onChange={(e) => {
-              setQuery(e.target.value);
-              debouncedSearch(e.target.value);
-            }}
-          />
-        </div>
-      )}
-    </header>
-  );
-}
+    {isOpen && (
+  <div className="md:hidden mt-2 space-y-2">
+    {/* Mobile search input */}
+    <input
+      type="text"
+      placeholder="Search opportunities..."
+      className="w-full px-3 py-2 border rounded"
+      value={query}
+      onChange={(e) => {
+        setQuery(e.target.value);
+        debouncedSearch(e.target.value);
+      }}
+    />
+
+    {/* Mobile menu links */}
+    <ul className="flex flex-col space-y-2 bg-gray-50 shadow-md p-2 rounded">
+      <li className="px-3 py-2 rounded hover:bg-gray-200">Link 1</li>
+      <li className="px-3 py-2 rounded hover:bg-gray-200">Link 2</li>
+      <li className="px-3 py-2 rounded hover:bg-gray-200">Link 3</li>
+    </ul>
+  </div>
+)}
